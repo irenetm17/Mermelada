@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     private const float rotSpeed = 6;
     void Movement()
     {
-        if (Input.GetKey(KeyCode.Space)) AddForce(speed * transform.up);
+        if (Input.GetKey(KeyCode.W)) AddForce(speed * transform.up);
 
         if (Input.GetKey(KeyCode.A)) AddRotationForce(rotSpeed * Vector3.forward);
         if (Input.GetKey(KeyCode.D)) AddRotationForce(rotSpeed * Vector3.back);

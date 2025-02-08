@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private Claw claw;
+
     private void Update()
     {
         Movement();
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour
     private const float rotSpeed = 6;
     void Movement()
     {
+        if (Minigames.IsPlayingMinigame) return;
+
         if (Input.GetKey(KeyCode.W)) AddForce(speed * transform.up);
 
         if (Input.GetKey(KeyCode.A)) AddRotationForce(rotSpeed * Vector3.forward);
@@ -29,7 +33,7 @@ public class Player : MonoBehaviour
         rotationMomentum *= resistence;
 
         transform.Translate(momentum * Time.deltaTime, Space.World);
-        transform.Rotate(rotationMomentum * Time.deltaTime);
+        if(!claw.IsDeployed) transform.Rotate(rotationMomentum * Time.deltaTime);
     }
 
     void AddForce(Vector3 force) { momentum += force; }

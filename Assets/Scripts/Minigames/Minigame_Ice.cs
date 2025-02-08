@@ -44,7 +44,7 @@ public class Minigame_Ice : MonoBehaviour
     }
 
     private const float MIN_CLAW_HEIGHT = 100;
-    private const float MAX_CLAW_HEIGHT = 500;
+    private const float MAX_CLAW_HEIGHT = 420;
     private const float DEPLOY_SPEED = 490;
     void DeployClaw()
     {
@@ -83,7 +83,7 @@ public class Minigame_Ice : MonoBehaviour
 
     private bool hasCatchedBlock;
     private float blockSpeed = 1;
-    private const float FLOOR_HEIGHT = -180;
+    private const float FLOOR_HEIGHT = -135;
     private const float MAX_BLOCK_DIST = 680;
     void IceBlock()
     {

@@ -37,7 +37,7 @@ public class Minigames : MonoBehaviour
 
 
             case 1:
-                minigames[1].GetComponent<Minigame_Ice>().StartGame();
+                minigames[1].GetComponent<Minigame_Candy>().StartGame();
                 break;
 
 

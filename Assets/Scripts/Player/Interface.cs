@@ -26,7 +26,7 @@ public class Interface : MonoBehaviour
         bool isNear = Vector3.Distance(ship.position, player.position) < APPEAR_DIST;
         animator.SetBool("IsOpen", isNear);
 
-        if (isNear)
+        if (isNear || Minigames.MinigameID == 1)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;

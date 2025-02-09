@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
@@ -38,6 +39,12 @@ public class Health : MonoBehaviour
         slider.color = Color.LerpUnclamped(new Color(1,0,0,1), new Color(1,0,0,0), Mathf.Min(hitCooldown, 1));
 
         slider.size = new Vector2(0.4f * (health / 100), 0.01f);
+
+        if(health <= 0)
+        {
+            AudioManager._instance.PlayOne("Muerte");
+            SceneManager.LoadScene("GameLost");
+        }
     }
 
     public void TakeDamage(float damage)

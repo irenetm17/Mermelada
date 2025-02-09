@@ -10,6 +10,7 @@ public class Minigames : MonoBehaviour
     [SerializeField] private GameObject[] minigames;
 
     public static bool IsPlayingMinigame;
+    public static int MinigameID;
     private int minigamePlaying;
 
     private void Awake()
@@ -33,6 +34,7 @@ public class Minigames : MonoBehaviour
 
         IsPlayingMinigame = true;
         minigamePlaying = minigameId;
+        MinigameID = minigamePlaying;
 
         switch (minigameId)
         {
@@ -51,6 +53,8 @@ public class Minigames : MonoBehaviour
             minigames[2].GetComponent<Minigame_Plant>().StartGame();
             IsPlayingMinigame = false;
             minigamePlaying = -1;
+            MinigameID = -1;
+            this.gameObject.SetActive(false);
             return;
         }
 
@@ -73,5 +77,6 @@ public class Minigames : MonoBehaviour
         minigames[minigamePlaying].SetActive(false);
         IsPlayingMinigame = false;
         minigamePlaying = -1;
+        MinigameID = -1;
     }
 }

@@ -6,14 +6,14 @@ public class BarManager : MonoBehaviour
 {
 
     private int love;
-    private int dirty;
-    private int hungry;
+    private int clean;
+    private int satiety;
 
     public void Start()
     {
-        love = 0;
-        dirty = 0;
-        hungry = 0;
+        love = 5;
+        clean = 5;
+        satiety = 5;
     }
     public void AddLove()
     {
@@ -33,39 +33,39 @@ public class BarManager : MonoBehaviour
         }
     }
 
-    public void AddHungry()
+    public void AddSatiety()
     {
-        if (hungry != 5)
+        if (satiety != 5)
         {
-            this.transform.GetChild(2).GetChild(hungry).gameObject.SetActive(true);
-            hungry++;
+            this.transform.GetChild(2).GetChild(satiety).gameObject.SetActive(true);
+            satiety++;
         }
     }
 
-    public void RemoveHungry()
+    public void RemoveSatiety()
     {
-        if (hungry != 0)
+        if (satiety != 0)
         {
-            this.transform.GetChild(2).GetChild(hungry - 1).gameObject.SetActive(false);
-            hungry--;
+            this.transform.GetChild(2).GetChild(satiety - 1).gameObject.SetActive(false);
+            satiety--;
         }
     }
 
-    public void AddDirty()
+    public void AddClean()
     {
-        if (dirty != 5)
+        if (clean != 5)
         {
-            this.transform.GetChild(0).GetChild(dirty).gameObject.SetActive(true);
-            dirty++;
+            this.transform.GetChild(0).GetChild(clean).gameObject.SetActive(true);
+            clean++;
         }
     }
 
-    public void RemoveDirty()
+    public void RemoveClean()
     {
-        if (dirty != 0)
+        if (clean != 0)
         {
-            this.transform.GetChild(0).GetChild(dirty - 1).gameObject.SetActive(false);
-            dirty--;
+            this.transform.GetChild(0).GetChild(clean - 1).gameObject.SetActive(false);
+            clean--;
         }
     }
 }

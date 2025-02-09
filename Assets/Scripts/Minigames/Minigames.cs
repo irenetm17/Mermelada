@@ -20,8 +20,7 @@ public class Minigames : MonoBehaviour
 
     private void Update()
     {
-        if (IsPlayingMinigame)
-            if (Input.GetKeyDown(KeyCode.F)) EndMinigame();
+        if (Input.GetKeyDown(KeyCode.F)) EndMinigame();
     }
 
     public void StartMinigame(byte minigameId)
@@ -42,7 +41,7 @@ public class Minigames : MonoBehaviour
 
 
             case 2:
-                minigames[2].GetComponent<Minigame_Ice>().StartGame();
+                minigames[2].GetComponent<Minigame_Plant>().StartGame();
                 break;
         }
 
@@ -50,7 +49,11 @@ public class Minigames : MonoBehaviour
         minigames[minigameId].SetActive(true);
 
     }
-    public void EndMinigame() { StartCoroutine(EndMinigame_EVENT()); }
+    public void EndMinigame()
+    {
+        if (!IsPlayingMinigame) return;
+        StartCoroutine(EndMinigame_EVENT());
+    }
     IEnumerator EndMinigame_EVENT()
     {
         animator.SetTrigger("Close");

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Minigame_Ice : MonoBehaviour
 {
+    [SerializeField] private Storage storage;
+    [Space]
     [SerializeField] private RectTransform claw;
     [SerializeField] private Image clawImage;
     [SerializeField] private Sprite[] clawSprites;
@@ -76,8 +78,7 @@ public class Minigame_Ice : MonoBehaviour
         {
             block.localPosition = new Vector2(MAX_BLOCK_DIST, FLOOR_HEIGHT);
             hasCatchedBlock = false;
-
-            //  todo:   add storage points
+            storage.AddContent(0, Random.Range(1, 6));
         }
     }
 

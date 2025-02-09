@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PetManager : MonoBehaviour
 {
+    public Storage storage;
+    public Button foodButton;
+    public Button cleanButton;
     public AnimatorController[] _animations = new AnimatorController[4];
-    private Animator _animator;
+    public Animator _animator;
     public BarManager barManager;
     public float time;
     public int index;
@@ -27,7 +31,6 @@ public class PetManager : MonoBehaviour
     void Start()
     {
         time = 0;
-        _animator = GetComponent<Animator>();
         _animator.runtimeAnimatorController = _animations[0];
         loveTime = 0;
         satietyTime = 0;
@@ -40,6 +43,9 @@ public class PetManager : MonoBehaviour
 
     void Update()
     {
+        cleanButton.interactable = storage.currentContent == 0 && storage.currentCount != 0;
+        foodButton.interactable = storage.currentContent == 1 && storage.currentCount != 0;
+
         if (time >= 60f)
         {
             index++;
@@ -121,7 +127,7 @@ public class PetManager : MonoBehaviour
         if (clean != 0)
         {
             barManager.RemoveClean();
-            gameObject.transform.GetChild(5 - clean).gameObject.SetActive(true);
+            _animator.transform.GetChild(5 - clean).gameObject.SetActive(true);
             clean--;
         }
         else
@@ -145,6 +151,7 @@ public class PetManager : MonoBehaviour
             satiety++;
             Feed();
             barManager.AddSatiety();
+            storage.Use(2, 5);
         }
     }
 
@@ -153,8 +160,9 @@ public class PetManager : MonoBehaviour
         if (clean != 5)
         {
             clean++;
-            this.transform.GetChild(5 - clean).gameObject.SetActive(false);
+            _animator.transform.GetChild(5 - clean).gameObject.SetActive(false);
             barManager.AddClean();
+            storage.Use(1, 6);
         }
     }
 }

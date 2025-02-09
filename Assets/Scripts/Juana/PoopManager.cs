@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PoopManager : MonoBehaviour
 {
@@ -11,6 +12,6 @@ public class PoopManager : MonoBehaviour
 
     public void ToHide()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        this.gameObject.GetComponent<Image>().enabled = false;
     }
 }

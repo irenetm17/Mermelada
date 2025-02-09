@@ -1023,7 +1023,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &705788936
@@ -1070,7 +1070,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 786867072}
-  - component: {fileID: 786867073}
   m_Layer: 0
   m_Name: PlanetManager
   m_TagString: Untagged
@@ -1096,24 +1095,6 @@ Transform:
   - {fileID: 1649542109}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &786867073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786867071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d19127f433b334b8dd57898b5cad6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  topLeft: {x: -9, y: -5}
-  bottomRight: {x: 9, y: 5}
-  planets:
-  - {fileID: 1036181554}
-  - {fileID: 705788933}
-  - {fileID: 1649542108}
 --- !u!1 &857857366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,12 +1275,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planets:
-  - {fileID: 1036181554}
-  - {fileID: 705788933}
-  - {fileID: 1649542108}
-  prefabMeteor: {fileID: 7085580378733599776, guid: 522ae7cfd0102cd4b95f806878ebe41a, type: 3}
-  topleft: {x: -9, y: -5}
-  bottomright: {x: 9, y: 5}
+  - {fileID: 1036181555}
+  - {fileID: 705788934}
+  - {fileID: 1649542109}
+  meteorsPrefab:
+  - {fileID: 7085580378733599776, guid: 522ae7cfd0102cd4b95f806878ebe41a, type: 3}
+  - {fileID: 7085580378733599776, guid: 04d08eb9a2d18ca4eaa9ed1766482314, type: 3}
+  bottomLeft: {x: -7.25, y: -9.85}
+  topRight: {x: 8.24, y: 8.88}
 --- !u!4 &937704313
 Transform:
   m_ObjectHideFlags: 0
@@ -1760,7 +1743,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &1036181557
@@ -2722,7 +2705,7 @@ SpriteRenderer:
   m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &1649542111

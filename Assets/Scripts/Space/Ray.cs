@@ -9,17 +9,18 @@ public class Ray : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        //transform.LookAt(Vector3.forward, player.transform.position);
     }
 
     private void Update()
     {
-        transform.Translate(Time.deltaTime * 16 * transform.up);
+        transform.Translate(Time.deltaTime * 16 * transform.right, Space.World);
         if (Vector3.Distance(transform.position, player.transform.position) > 32) Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player")) other.GetComponent<Health>().TakeDamage(10);
+        if (other.CompareTag("Player")) other.gameObject.GetComponent<Health>().TakeDamage(10);
 
         Destroy(this.gameObject);
     }

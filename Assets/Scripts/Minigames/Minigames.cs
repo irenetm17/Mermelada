@@ -14,7 +14,11 @@ public class Minigames : MonoBehaviour
 
     private void Awake()
     {
+        this.gameObject.SetActive(false);
+
         foreach (GameObject minigame in minigames) minigame.SetActive(false);
+        minigames[2].SetActive(true);
+
         EndMinigame();
     }
 
@@ -25,6 +29,8 @@ public class Minigames : MonoBehaviour
 
     public void StartMinigame(byte minigameId)
     {
+        this.gameObject.SetActive(true);
+
         IsPlayingMinigame = true;
         minigamePlaying = minigameId;
 
@@ -38,11 +44,14 @@ public class Minigames : MonoBehaviour
             case 1:
                 minigames[1].GetComponent<Minigame_Candy>().StartGame();
                 break;
+        }
 
-
-            case 2:
-                minigames[2].GetComponent<Minigame_Plant>().StartGame();
-                break;
+        if (minigameId == 2)
+        {
+            minigames[2].GetComponent<Minigame_Plant>().StartGame();
+            IsPlayingMinigame = false;
+            minigamePlaying = -1;
+            return;
         }
 
         animator.SetTrigger("Open");

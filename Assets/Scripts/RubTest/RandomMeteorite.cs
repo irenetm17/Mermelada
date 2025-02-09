@@ -82,7 +82,6 @@ public class RandomMeteorite : MonoBehaviour
                 float distance = Vector2.Distance(planets[i].transform.position, obj.transform.position);
                 if (distance < 1.75f)
                 {
-                    Debug.Log("Apply force");
                     Vector2 directionMtoF = -(planets[i].transform.position - obj.transform.position).normalized;
                     obj.GetComponent<Rigidbody2D>().AddForce((directionMtoF * (forceStrength - 0.5f)) * (1.75f - distance), ForceMode2D.Impulse);
                 }

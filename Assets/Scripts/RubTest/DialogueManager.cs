@@ -13,16 +13,6 @@ public class DialogueManager : MonoBehaviour
     public float typingTime = 0.01f;
     public TMP_Text textoDialogo;
 
-    public bool isfirst = true;
-    private string[] prueba1 = { "Muy majos todos...", "Me tengo que ir paqui", "Adios paqui"};
-    public void Update()
-    {
-        if (isfirst == true)
-        {
-            StartDialogue(prueba1);
-            isfirst = false;
-        }
-    }
     public void StartDialogue(string[] array)
     {
         arrayTextos = array;

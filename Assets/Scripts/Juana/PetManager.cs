@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PetManager : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class PetManager : MonoBehaviour
     public float time;
     public int index;
 
-    private readonly float loveRemoveTime = 5f;
-    private readonly float satietyRemoveTime = 2f;
-    private readonly float cleanRemoveTime = 3f;
+    private readonly float loveRemoveTime = 36f;
+    private readonly float satietyRemoveTime = 15f;
+    private readonly float cleanRemoveTime = 29f;
 
     private float loveTime;
     private float satietyTime;
@@ -51,6 +52,7 @@ public class PetManager : MonoBehaviour
         if (loveTime > loveRemoveTime)
         {
             LoveAdjust();
+            Pet();
             loveTime -= loveRemoveTime;
         }
         else
@@ -102,7 +104,7 @@ public class PetManager : MonoBehaviour
             love--;
         }
         else
-            Debug.Log("Pierdes porque: amor 0");//PERDER EL JUEGO PORQUE KAPUT
+            SceneManager.LoadScene("GameLost");
     }
     public void SatietyAdjust()
     {
@@ -112,7 +114,7 @@ public class PetManager : MonoBehaviour
             satiety--;
         }
         else
-            Debug.Log("Pierdes porque: hambre 5");//PERDER EL JUEGO PORQUE KAPUT
+            SceneManager.LoadScene("GameLost");
     }
     public void CleanAdjust()
     {
@@ -123,7 +125,36 @@ public class PetManager : MonoBehaviour
             clean--;
         }
         else
-            Debug.Log("Pierdes porque: limpio 0");//PERDER EL JUEGO PORQUE KAPUT
+            SceneManager.LoadScene("GameLost");
     }
 
+    public void AddLove()
+    {
+        if (love != 5)
+        {
+            love++;
+            Pet();
+            barManager.AddLove();
+        }
+    }
+
+    public void AddSatiety()
+    {
+        if (satiety != 5)
+        {
+            satiety++;
+            Feed();
+            barManager.AddSatiety();
+        }
+    }
+
+    public void AddClean()
+    {
+        if (clean != 5)
+        {
+            clean++;
+            this.transform.GetChild(5 - clean).gameObject.SetActive(false);
+            barManager.AddClean();
+        }
+    }
 }

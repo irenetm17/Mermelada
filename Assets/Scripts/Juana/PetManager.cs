@@ -41,6 +41,12 @@ public class PetManager : MonoBehaviour
         satiety = 5;
     }
 
+    public IEnumerator MuertePeroBuena()
+    {
+        _animator.SetBool("isAlive", false);
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("CinematicaFinal");
+    }
     void Update()
     {
         cleanButton.interactable = storage.currentContent == 0 && storage.currentCount != 0;
@@ -49,7 +55,11 @@ public class PetManager : MonoBehaviour
         if (time >= 60f)
         {
             index++;
-            _animator.runtimeAnimatorController = _animations[index];
+            AudioManager._instance.PlayOne("Crecer");
+            if (index == 4)
+                StartCoroutine(MuertePeroBuena());
+            else
+                _animator.runtimeAnimatorController = _animations[index];
             time = 0;
         }
         else
@@ -110,7 +120,10 @@ public class PetManager : MonoBehaviour
             love--;
         }
         else
+        {
+            AudioManager._instance.PlayOne("Muerte");
             SceneManager.LoadScene("GameLost");
+        }
     }
     public void SatietyAdjust()
     {
@@ -120,7 +133,10 @@ public class PetManager : MonoBehaviour
             satiety--;
         }
         else
+        {
+            AudioManager._instance.PlayOne("Muerte");
             SceneManager.LoadScene("GameLost");
+        }
     }
     public void CleanAdjust()
     {
@@ -131,7 +147,10 @@ public class PetManager : MonoBehaviour
             clean--;
         }
         else
+        {
+            AudioManager._instance.PlayOne("Muerte");
             SceneManager.LoadScene("GameLost");
+        }
     }
 
     public void AddLove()
@@ -151,6 +170,7 @@ public class PetManager : MonoBehaviour
             satiety++;
             Feed();
             barManager.AddSatiety();
+            AudioManager._instance.PlayOne("Comer");
             storage.Use(2, 5);
         }
     }
@@ -162,6 +182,7 @@ public class PetManager : MonoBehaviour
             clean++;
             _animator.transform.GetChild(5 - clean).gameObject.SetActive(false);
             barManager.AddClean();
+            AudioManager._instance.PlayOne("Limpiar");
             storage.Use(1, 6);
         }
     }

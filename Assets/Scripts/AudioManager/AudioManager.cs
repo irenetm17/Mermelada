@@ -34,4 +34,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayOne(string nameEffect)
+    {
+        AudioSource source = list.Find(sour => sour.name.Equals(nameEffect));
+        if (source != null)
+        {
+            source.Play();
+        }
+    }
+
 }

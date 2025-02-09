@@ -13,7 +13,7 @@ public class CinematicaInicial : MonoBehaviour
     [SerializeField] private GameObject bichillo;
     public DialogueManager dialogo;
 
-    private string[] str = { "HOLAAA", "ADIOOS"};
+    public string[] str = { "HOLAAA", "ADIOOS"};
     // Update is called once per frame
     void Update()
     {

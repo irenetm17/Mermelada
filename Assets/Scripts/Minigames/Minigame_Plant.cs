@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Minigame_Plant : MonoBehaviour
 {
+    [SerializeField] private CanvasGroup alpha;
+    [Space(20)]
     [SerializeField] private RectTransform wire;
     [Space]
     [SerializeField] private RectTransform ring;
@@ -15,12 +17,14 @@ public class Minigame_Plant : MonoBehaviour
 
     public void StartGame()
     {
-
+        alphaTime = 2;
     }
 
+    private float alphaTime;
     private void Update()
     {
-        Ring();
+        alphaTime -= Time.deltaTime;
+        alpha.alpha = alphaTime;
     }
 
     private byte wins;

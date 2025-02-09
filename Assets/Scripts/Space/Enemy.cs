@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        attackCooldown = 5;
     }
 
     private void Update()
@@ -23,7 +24,7 @@ public class Enemy : MonoBehaviour
     private Vector3 momentum;
     private bool isRetreiving;
     private const float SPEED = 25;
-    private const float MAX_SPEED = 6;
+    private const float MAX_SPEED = 5;
     private const float RETREIVE_DISTANCE = 7;
     private const float RETURN_DISTANCE = 13;
     void Chasing()
@@ -47,8 +48,9 @@ public class Enemy : MonoBehaviour
         attackCooldown -= Time.deltaTime;
         if(attackCooldown < 0)
         {
-            Instantiate(rayPrefab, raysSpawners[Random.Range(0, raysSpawners.Length)].position, transform.rotation * Quaternion.Euler(0, 0, 90));
-            attackCooldown = Random.Range(0.5f, 3f);
+            int rand = Random.Range(0, raysSpawners.Length);
+            Instantiate(rayPrefab, raysSpawners[rand].position, raysSpawners[rand].rotation * Quaternion.Euler(0, 0, 90));
+            attackCooldown = Random.Range(0.2f, 1f);
         }
     }
 }

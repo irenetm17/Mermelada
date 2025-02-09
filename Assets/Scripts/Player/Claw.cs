@@ -67,7 +67,7 @@ public class Claw : MonoBehaviour
             if (Vector3.Distance(world.transform.position, claw.position) < 7)
             {
                 minigamesController.StartMinigame(world.worldId);
-                return true;
+                return world.worldId != 2;
             }
         }
 

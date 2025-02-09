@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer slider;
-    [SerializeField] private CanvasGroup alpha;
 
     private float health;
     private float hitCooldown;
@@ -30,15 +30,21 @@ public class Health : MonoBehaviour
         recoveryCooldown -= Time.deltaTime;
         if (recoveryCooldown < 0)
         {
-            health += Random.Range(5, 15);
+            health += Random.Range(2, 10);
             recoveryCooldown = Random.Range(RECOVERY_COOLDOWN.x, RECOVERY_COOLDOWN.y);
         }
 
         health = Mathf.Clamp(health, 0, 100);
 
-        alpha.alpha += hitCooldown < 3 ? 1 : -Time.deltaTime;
+        slider.color = Color.LerpUnclamped(new Color(1,0,0,1), new Color(1,0,0,0), Mathf.Min(hitCooldown, 1));
 
         slider.size = new Vector2(0.4f * (health / 100), 0.01f);
+
+        if(health <= 0)
+        {
+            AudioManager._instance.PlayOne("Muerte");
+            SceneManager.LoadScene("GameLost");
+        }
     }
 
     public void TakeDamage(float damage)

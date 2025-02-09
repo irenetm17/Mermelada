@@ -407,6 +407,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1a6f204aab5cd8049b19b232bb5f9463, type: 3}
   - {fileID: 21300000, guid: 27c110a588a90164b8e810d399d1b35d, type: 3}
   countText: {fileID: 989193670}
+  currentContent: 0
+  currentCount: 0
 --- !u!1 &82341192
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,6 +930,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5e77c98ce5dbf4dafa1174b239e5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 0}
+  foodButton: {fileID: 0}
+  cleanButton: {fileID: 0}
   _animations:
   - {fileID: 9100000, guid: 1607b6b110640f64d80679ddd55f1d78, type: 2}
   - {fileID: 9100000, guid: 6e2fda5d32f4e4e48bc0f655f54fea0a, type: 2}
@@ -9003,6 +9008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed5e77c98ce5dbf4dafa1174b239e5fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storage: {fileID: 60142756}
+  foodButton: {fileID: 572765224}
+  cleanButton: {fileID: 1522444542}
   _animations:
   - {fileID: 9100000, guid: 1607b6b110640f64d80679ddd55f1d78, type: 2}
   - {fileID: 9100000, guid: 6e2fda5d32f4e4e48bc0f655f54fea0a, type: 2}

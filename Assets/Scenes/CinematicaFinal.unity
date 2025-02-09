@@ -337,11 +337,11 @@ MonoBehaviour:
   bichillo: {fileID: 792511443}
   dialogo: {fileID: 1179122333}
   str:
-  - LLEGASTE AL PLANETA MISTERIOSO
-  - AQUI ENCONTRASTE MAS SERES DE LA MISMA ESPECIE QUE TU MASCOTA.
-  - QUE BIEN, POR FIN TU MASCOTA ESTARA CON LOS SUYOS.
-  - PARECE QUE HA ENCONTRADO EL AMOR Y VA A VIVIR SU VIDA.
-  - "QUE LO PASES BIEN PEQUE\xD1IN."
+  - You arrived to a misterious place
+  - There is another Lenux in the planet!
+  - Finally your pet will be surrounded by their kind
+  - It looks like they have found the love of their life
+  - See you soon my little one
 --- !u!1 &927557469
 GameObject:
   m_ObjectHideFlags: 0

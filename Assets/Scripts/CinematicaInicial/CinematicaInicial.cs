@@ -13,7 +13,7 @@ public class CinematicaInicial : MonoBehaviour
     [SerializeField] private GameObject bichillo;
     public DialogueManager dialogo;
 
-    public string[] str = { "HOLAAA", "ADIOOS"};
+    public string[] str = { "*Somewhere lost in space*","*An alien race called the Lenux lived peacefully till...*","*Some invaders dicovered the great potential for exploitation*", "Oh,what is that...", "Is that the last Lneux alive!?", "I should take care of it","I can't let that species of cute aliens die"};
     // Update is called once per frame
     void Update()
     {

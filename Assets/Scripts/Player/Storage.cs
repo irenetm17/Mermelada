@@ -10,14 +10,19 @@ public class Storage : MonoBehaviour
     [SerializeField] private Sprite[] sprites;
     [SerializeField] private TMP_Text countText;
 
-    private byte currentContent;
-    private int currentCount;
+    public byte currentContent;
+    public int currentCount;
 
     public void AddContent(byte contentId, int count)
     {
         if (currentContent != contentId) currentCount = 0;
         currentContent = contentId;
         currentCount += count;
+    }
+    public void Use(int min, int max)
+    {
+        currentCount -= Random.Range(min, max);
+        if (currentCount < 0) currentCount = 0;
     }
 
     private void Update()
